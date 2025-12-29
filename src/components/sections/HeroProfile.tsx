@@ -235,7 +235,7 @@ export default function HeroProfile() {
                         transform: "rotate(12deg) translateX(20%) translateY(-30%)",
                         x: bgTextX,
                         y: bgTextY,
-                    } as React.CSSProperties}
+                    }}
                 >
                     ヒーロー
                 </motion.span>
@@ -251,7 +251,7 @@ export default function HeroProfile() {
                         letterSpacing: "0.2em",
                         x: bgTextX,
                         y: bgTextY,
-                    } as React.CSSProperties}
+                    }}
                 >
                     PROTOCOL
                 </motion.span>
