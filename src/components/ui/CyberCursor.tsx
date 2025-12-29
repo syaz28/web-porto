@@ -78,6 +78,11 @@ export default function CyberCursor() {
         setIsVisible(true);
     }, []);
 
+    // Reset cursor state handler (for overlays like SecretHackerMode)
+    const handleResetCursor = useCallback(() => {
+        setIsHovering(false);
+    }, []);
+
     // Setup event listeners
     useEffect(() => {
         if (isTouchDevice) return;
@@ -88,14 +93,18 @@ export default function CyberCursor() {
         document.documentElement.addEventListener("mouseleave", handleMouseLeave);
         document.documentElement.addEventListener("mouseenter", handleMouseEnter);
 
+        // Listen for custom reset event from overlays
+        window.addEventListener("resetCursor", handleResetCursor);
+
         return () => {
             window.removeEventListener("mousemove", handleMouseMove);
             document.removeEventListener("mouseover", handleMouseOver);
             document.removeEventListener("mouseout", handleMouseOut);
             document.documentElement.removeEventListener("mouseleave", handleMouseLeave);
             document.documentElement.removeEventListener("mouseenter", handleMouseEnter);
+            window.removeEventListener("resetCursor", handleResetCursor);
         };
-    }, [isTouchDevice, handleMouseMove, handleMouseOver, handleMouseOut, handleMouseLeave, handleMouseEnter]);
+    }, [isTouchDevice, handleMouseMove, handleMouseOver, handleMouseOut, handleMouseLeave, handleMouseEnter, handleResetCursor]);
 
     // Don't render on touch devices
     if (isTouchDevice) return null;

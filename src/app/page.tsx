@@ -3,6 +3,7 @@ import TechArsenal from "@/components/sections/TechArsenal";
 import ProjectShowcase from "@/components/sections/ProjectShowcase";
 import ExperienceLog from "@/components/sections/ExperienceLog";
 import CursorSpotlight from "@/components/ui/CursorSpotlight";
+import SecretHackerMode from "@/components/ui/SecretHackerMode";
 
 export default function Home() {
   return (
@@ -111,6 +112,9 @@ export default function Home() {
           </div>
         </div>
       </footer>
+
+      {/* Easter Egg - Secret Hacker Mode */}
+      <SecretHackerMode />
     </main>
   );
 }

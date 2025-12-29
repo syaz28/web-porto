@@ -230,7 +230,7 @@ export default function ExperienceLog() {
                     className="flex items-center gap-3 md:gap-4 mb-4 md:mb-6"
                 >
                     <div className="h-px flex-1 bg-gradient-to-r from-transparent via-neon-red to-transparent" />
-                    <span className="terminal-text text-neon-red text-[10px] md:text-xs tracking-widest">[MODULE.03]</span>
+                    <span className="terminal-text text-neon-red text-[10px] md:text-xs tracking-widest">[MODULE.04]</span>
                     <div className="h-px flex-1 bg-gradient-to-l from-transparent via-neon-red to-transparent" />
                 </motion.div>
 

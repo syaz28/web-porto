@@ -133,7 +133,7 @@ export default function ProjectShowcase() {
                     className="flex items-center gap-3 md:gap-4 mb-4 md:mb-6"
                 >
                     <div className="h-px flex-1 bg-gradient-to-r from-transparent via-purple-500 to-transparent" />
-                    <span className="terminal-text text-purple-400 text-[10px] md:text-xs tracking-widest">[MODULE.04]</span>
+                    <span className="terminal-text text-purple-400 text-[10px] md:text-xs tracking-widest">[MODULE.03]</span>
                     <div className="h-px flex-1 bg-gradient-to-l from-transparent via-purple-500 to-transparent" />
                 </motion.div>
 
