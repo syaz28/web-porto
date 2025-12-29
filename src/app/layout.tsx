@@ -12,9 +12,9 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "SYAZ PROTOCOL | Security & DevOps Engineer",
+  title: "SYAZ PORTOFOLIO PROJECT",
   description:
-    "Portfolio of Syahrindra Rafli Santosa - Security & DevOps Engineer specializing in penetration testing, container orchestration, and automation pipelines.",
+    "Portfolio of Syahrindra Rafli Santosa",
   keywords: [
     "Security Engineer",
     "DevOps",
