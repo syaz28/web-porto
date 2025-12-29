@@ -41,7 +41,7 @@ const EXPERIENCE_DATA: ExperienceEntry[] = [
     {
         id: "ORG_002",
         role: "Daily Administrator",
-        organization: "The Bus Factor Is 1 - UNNES",
+        organization: "The Bus Factor Is 1 (CTF Community)",
         period: "Nov 2025 - Present",
         status: "ACTIVE",
         type: "ORG",
