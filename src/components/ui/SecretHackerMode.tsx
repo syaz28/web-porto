@@ -397,7 +397,7 @@ export default function SecretHackerMode() {
       `}</style>
 
             <AnimatePresence>
-                {hackState !== "idle" && (
+                {(hackState === "breach" || hackState === "success" || hackState === "exit") && (
                     <motion.div
                         initial={{ opacity: 0 }}
                         animate={{
