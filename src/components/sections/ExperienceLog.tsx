@@ -149,7 +149,7 @@ function StatusLight({ color, delay = 0 }: { color: "red" | "green" | "yellow"; 
 }
 
 // FIXED: Dynamic scanner that travels the full container height
-function BootScanner({ isActive, containerRef }: { isActive: boolean; containerRef: React.RefObject<HTMLDivElement> }) {
+function BootScanner({ isActive, containerRef }: { isActive: boolean; containerRef: React.RefObject<HTMLDivElement | null> }) {
     const y = useMotionValue("0%");
 
     useEffect(() => {
