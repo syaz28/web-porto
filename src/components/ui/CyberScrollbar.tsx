@@ -4,14 +4,17 @@ import { motion, useScroll, useSpring, useTransform, useMotionValueEvent } from 
 import { useState, useRef, useCallback, useEffect } from "react";
 
 export default function CyberScrollbar() {
+    // ═══════════════════════════════════════════════════════════════════
+    // ALL HOOKS MUST BE CALLED UNCONDITIONALLY AT THE TOP
+    // ═══════════════════════════════════════════════════════════════════
+
     const { scrollYProgress } = useScroll();
     const [scrollPercent, setScrollPercent] = useState(0);
     const [isDragging, setIsDragging] = useState(false);
-    // Start as null to indicate "not yet determined" - prevents hydration mismatch
     const [isMobile, setIsMobile] = useState<boolean | null>(null);
     const trackRef = useRef<HTMLDivElement>(null);
 
-    // Detect mobile on mount - only runs on client
+    // Detect mobile on mount
     useEffect(() => {
         const checkMobile = () => {
             setIsMobile(window.innerWidth < 768);
@@ -21,7 +24,7 @@ export default function CyberScrollbar() {
         return () => window.removeEventListener("resize", checkMobile);
     }, []);
 
-    // Very smooth spring - must be called unconditionally (React hooks rules)
+    // Spring animation
     const smoothProgress = useSpring(scrollYProgress, {
         stiffness: 80,
         damping: 20,
@@ -35,11 +38,9 @@ export default function CyberScrollbar() {
         setScrollPercent(Math.round(latest * 100));
     });
 
-    // Hide on mobile OR during SSR (isMobile === null means not yet determined)
-    // This return is AFTER all hooks to comply with React's rules of hooks
-    if (isMobile === null || isMobile === true) return null;
-
+    // ALL useCallback hooks MUST be called unconditionally
     const scrollToProgress = useCallback((progress: number) => {
+        if (typeof window === "undefined") return;
         const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
         const targetY = scrollHeight * Math.max(0, Math.min(1, progress));
         window.scrollTo(0, targetY);
@@ -61,6 +62,13 @@ export default function CyberScrollbar() {
         scrollToProgress(progress);
     }, [isDragging, getProgressFromY, scrollToProgress]);
 
+    const handleThumbMouseDown = useCallback((e: React.MouseEvent) => {
+        e.preventDefault();
+        e.stopPropagation();
+        setIsDragging(true);
+    }, []);
+
+    // Drag handling effect
     useEffect(() => {
         if (!isDragging) return;
 
@@ -96,11 +104,14 @@ export default function CyberScrollbar() {
         };
     }, [isDragging, getProgressFromY, scrollToProgress]);
 
-    const handleThumbMouseDown = useCallback((e: React.MouseEvent) => {
-        e.preventDefault();
-        e.stopPropagation();
-        setIsDragging(true);
-    }, []);
+    // ═══════════════════════════════════════════════════════════════════
+    // CONDITIONAL RENDERING - ONLY AFTER ALL HOOKS ARE CALLED
+    // ═══════════════════════════════════════════════════════════════════
+
+    // Don't render on mobile or during SSR
+    if (isMobile === null || isMobile === true) {
+        return null;
+    }
 
     return (
         <div
