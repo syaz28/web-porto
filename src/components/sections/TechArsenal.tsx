@@ -87,20 +87,24 @@ function HexagonCard({ icon }: HexagonCardProps) {
             whileTap={{ scale: 1.05 }}
             transition={{ type: "spring", stiffness: 300, damping: 15 }}
         >
-            {/* Hexagon - Smaller on mobile */}
+            {/* Hexagon - Visible by default with glow */}
             <div
-                className="relative w-16 h-20 sm:w-20 sm:h-24 md:w-24 md:h-28 lg:w-28 lg:h-32 flex items-center justify-center cursor-pointer transition-colors duration-200"
+                className="relative w-16 h-20 sm:w-20 sm:h-24 md:w-24 md:h-28 lg:w-28 lg:h-32 flex items-center justify-center cursor-pointer transition-all duration-300"
                 style={{
                     clipPath: HEXAGON_CLIP,
-                    background: isHovered ? icon.color : "#0a0a0a",
-                    boxShadow: isHovered ? `0 0 20px ${icon.color}60` : "2px 2px 0px #000",
+                    background: isHovered ? icon.color : `linear-gradient(135deg, ${icon.color}30, #0a0a0a)`,
+                    boxShadow: isHovered
+                        ? `0 0 25px ${icon.color}80, inset 0 0 20px ${icon.color}40`
+                        : `0 0 12px ${icon.color}25, 2px 2px 0px #000`,
                 }}
             >
                 <div
                     className="absolute inset-[2px] flex items-center justify-center"
                     style={{
                         clipPath: HEXAGON_CLIP,
-                        background: isHovered ? `linear-gradient(135deg, ${icon.color}40, #0a0a0a)` : "#0a0a0a",
+                        background: isHovered
+                            ? `linear-gradient(135deg, ${icon.color}50, #0a0a0a 60%)`
+                            : `linear-gradient(135deg, ${icon.color}15, #0a0a0a 70%)`,
                     }}
                 >
                     <Image
@@ -108,11 +112,11 @@ function HexagonCard({ icon }: HexagonCardProps) {
                         alt={icon.name.replace(".svg", "")}
                         width={40}
                         height={40}
-                        className="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 lg:w-12 lg:h-12 relative z-10 transition-all duration-200"
+                        className="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 lg:w-12 lg:h-12 relative z-10 transition-all duration-300"
                         style={{
                             filter: isHovered
-                                ? `brightness(1.2) drop-shadow(0 0 6px ${icon.color})`
-                                : "grayscale(100%) brightness(0.7)",
+                                ? `brightness(1.3) drop-shadow(0 0 10px ${icon.color})`
+                                : `brightness(1) drop-shadow(0 0 4px ${icon.color}80)`,
                         }}
                     />
                 </div>
