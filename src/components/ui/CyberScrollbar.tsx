@@ -33,6 +33,8 @@ export default function CyberScrollbar() {
 
     const yPosition = useTransform(smoothProgress, [0, 1], ["5vh", "85vh"]);
     const thumbColor = useTransform(scrollYProgress, [0, 1], ["#00FFFF", "#FF0055"]);
+    // Pre-compute boxShadow as motion value - must be called at top level
+    const thumbBoxShadow = useTransform(thumbColor, (c) => `0 0 8px ${c}, 0 0 16px ${c}50`);
 
     useMotionValueEvent(scrollYProgress, "change", (latest) => {
         setScrollPercent(Math.round(latest * 100));
@@ -137,7 +139,7 @@ export default function CyberScrollbar() {
                     className="w-[3px] h-16 rounded-sm"
                     style={{
                         backgroundColor: thumbColor,
-                        boxShadow: useTransform(thumbColor, (c) => `0 0 8px ${c}, 0 0 16px ${c}50`),
+                        boxShadow: thumbBoxShadow,
                     }}
                 />
             </motion.div>
