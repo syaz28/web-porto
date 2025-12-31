@@ -151,10 +151,10 @@ function LegendaryCard() {
                 <div className="absolute top-0 right-0 w-8 h-8 border-r-2 border-t-2 border-neon-yellow" style={{ transform: "translate(1px, -1px)" }} />
                 <div className="absolute bottom-0 left-0 w-8 h-8 border-l-2 border-b-2 border-neon-red" style={{ transform: "translate(-1px, 1px)" }} />
 
-                {/* Grid Layout */}
-                <div className="grid md:grid-cols-5 gap-6 p-6 md:p-8">
-                    {/* Text Content - 60% */}
-                    <div className="md:col-span-3 flex flex-col justify-center">
+                {/* Grid Layout - Stacks on mobile */}
+                <div className="grid grid-cols-1 md:grid-cols-5 gap-4 md:gap-6 p-4 sm:p-6 md:p-8">
+                    {/* Text Content - 60% on desktop, full on mobile */}
+                    <div className="md:col-span-3 flex flex-col justify-center order-2 md:order-1">
                         {/* Tier Badge */}
                         <motion.div
                             className="inline-flex items-center gap-2 px-3 py-1 mb-4 w-fit"
@@ -216,8 +216,8 @@ function LegendaryCard() {
                         </div>
                     </div>
 
-                    {/* Holographic Image - 40% */}
-                    <div className="md:col-span-2 relative">
+                    {/* Holographic Image - 40% on desktop, full on mobile */}
+                    <div className="md:col-span-2 relative order-1 md:order-2">
                         <div className="relative aspect-[4/3] overflow-hidden">
                             {/* Grid Pattern Overlay */}
                             <div

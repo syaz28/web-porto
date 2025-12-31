@@ -187,10 +187,10 @@ function MobileMenu({ isOpen, onClose, activeSection }: {
                             boxShadow: "-10px 0 40px rgba(0,0,0,0.5)",
                         }}
                     >
-                        {/* Close Button */}
+                        {/* Close Button - 48px touch target */}
                         <motion.button
                             onClick={onClose}
-                            className="absolute top-4 right-4 w-10 h-10 flex items-center justify-center text-gray-400 hover:text-neon-red transition-colors"
+                            className="absolute top-4 right-4 w-12 h-12 flex items-center justify-center text-gray-400 hover:text-neon-red transition-colors touch-target"
                             whileHover={{ scale: 1.1, rotate: 90 }}
                             whileTap={{ scale: 0.9 }}
                         >
@@ -212,9 +212,9 @@ function MobileMenu({ isOpen, onClose, activeSection }: {
                                     animate={{ opacity: 1, x: 0 }}
                                     transition={{ delay: index * 0.05 }}
                                     onClick={() => handleNavClick(item.id)}
-                                    className={`w-full px-6 py-4 flex items-center gap-4 text-left transition-all duration-200 ${activeSection === item.id
-                                            ? "bg-neon-cyan/10 text-neon-cyan border-l-2 border-neon-cyan"
-                                            : "text-gray-400 hover:bg-white/5 hover:text-white border-l-2 border-transparent"
+                                    className={`w-full min-h-[56px] px-6 py-4 flex items-center gap-4 text-left transition-all duration-200 touch-active ${activeSection === item.id
+                                        ? "bg-neon-cyan/10 text-neon-cyan border-l-2 border-neon-cyan"
+                                        : "text-gray-400 active:bg-white/10 hover:bg-white/5 hover:text-white border-l-2 border-transparent"
                                         }`}
                                 >
                                     <span className={`text-lg ${activeSection === item.id ? "text-neon-cyan" : "text-gray-600"}`}>
@@ -237,8 +237,8 @@ function MobileMenu({ isOpen, onClose, activeSection }: {
                             ))}
                         </div>
 
-                        {/* Footer */}
-                        <div className="absolute bottom-0 left-0 right-0 p-6 border-t border-gray-800">
+                        {/* Footer - Safe area padding */}
+                        <div className="absolute bottom-0 left-0 right-0 p-6 pb-[max(1.5rem,env(safe-area-inset-bottom))] border-t border-gray-800">
                             <div className="font-mono text-[10px] text-gray-600 mb-2">SYSTEM_STATUS</div>
                             <div className="flex items-center gap-2">
                                 <motion.div
@@ -326,7 +326,7 @@ export default function HeroNav() {
                 initial={{ y: -100 }}
                 animate={{ y: isVisible ? 0 : -100 }}
                 transition={{ type: "spring", stiffness: 300, damping: 30 }}
-                className="fixed top-0 left-0 right-0 z-[900] px-4 md:px-8 py-3"
+                className="fixed top-0 left-0 right-0 z-[900] px-4 md:px-8 py-2 md:py-3 safe-top"
             >
                 <div
                     className={`max-w-7xl mx-auto flex items-center justify-between px-4 md:px-6 py-2 md:py-3 transition-all duration-300 ${isScrolled ? "backdrop-blur-xl" : ""
@@ -370,10 +370,10 @@ export default function HeroNav() {
                         <span>→</span>
                     </motion.a>
 
-                    {/* Mobile Menu Button */}
+                    {/* Mobile Menu Button - 48px touch target */}
                     <motion.button
                         onClick={() => setMobileMenuOpen(true)}
-                        className="lg:hidden flex flex-col gap-1.5 p-2"
+                        className="lg:hidden flex flex-col justify-center items-center gap-1.5 w-12 h-12 touch-target"
                         whileHover={{ scale: 1.1 }}
                         whileTap={{ scale: 0.9 }}
                     >

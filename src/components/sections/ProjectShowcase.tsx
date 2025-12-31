@@ -172,10 +172,10 @@ export default function ProjectShowcase() {
                 <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
 
                     {/* Left: Text Content */}
-                    <motion.div variants={textVariants} className="order-2 lg:order-1 space-y-6">
+                    <motion.div variants={textVariants} className="order-2 lg:order-1 space-y-4 md:space-y-6">
                         {/* Glassmorphism Panel */}
                         <div
-                            className="relative bg-black/40 backdrop-blur-md border border-purple-500/30 p-6 md:p-8"
+                            className="relative bg-black/40 backdrop-blur-md border border-purple-500/30 p-4 sm:p-6 md:p-8"
                             style={{
                                 clipPath: "polygon(0 0, 100% 0, 100% calc(100% - 30px), calc(100% - 30px) 100%, 0 100%)",
                                 boxShadow: "0 8px 32px rgba(139,92,246,0.15), inset 0 0 20px rgba(0,255,255,0.05)"
@@ -238,14 +238,14 @@ export default function ProjectShowcase() {
                                 ))}
                             </div>
 
-                            {/* CTA Button */}
+                            {/* CTA Button - Touch friendly */}
                             <motion.a
                                 href="https://aesxforge.netlify.app/"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 whileHover={{ scale: 1.05, x: 5 }}
                                 whileTap={{ scale: 0.95 }}
-                                className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-purple-600 to-neon-cyan text-black font-black uppercase tracking-wider text-sm transition-all duration-200 group"
+                                className="inline-flex items-center justify-center gap-3 min-h-[48px] px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-purple-600 to-neon-cyan text-black font-black uppercase tracking-wider text-xs sm:text-sm transition-all duration-200 group touch-active w-full sm:w-auto"
                                 style={{
                                     clipPath: "polygon(8% 0, 100% 0, 92% 100%, 0 100%)",
                                     boxShadow: "0 0 20px rgba(139,92,246,0.5), 4px 4px 0px #000"

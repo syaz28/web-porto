@@ -51,10 +51,13 @@
 
 * {
   box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
 }
 
 html {
   scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
 }
 
 body {
@@ -63,12 +66,161 @@ body {
   font-family: "JetBrains Mono", "Fira Code", "Courier New", monospace;
   line-height: 1.6;
   overflow-x: hidden;
+  /* Safe area for notched devices */
+  padding-left: env(safe-area-inset-left);
+  padding-right: env(safe-area-inset-right);
 }
 
 ::selection {
   background: var(--neon-cyan);
   color: var(--background);
 }
+
+/* ═══════════════════════════════════════════════════════════════════
+   MOBILE-FIRST UTILITIES
+   ═══════════════════════════════════════════════════════════════════ */
+
+/* Fluid Typography Scale - Mobile to Desktop */
+.text-fluid-xs {
+  font-size: clamp(0.625rem, 0.5rem + 0.5vw, 0.75rem);
+  /* 10px - 12px */
+}
+
+.text-fluid-sm {
+  font-size: clamp(0.75rem, 0.625rem + 0.5vw, 0.875rem);
+  /* 12px - 14px */
+}
+
+.text-fluid-base {
+  font-size: clamp(0.875rem, 0.75rem + 0.5vw, 1rem);
+  /* 14px - 16px */
+}
+
+.text-fluid-lg {
+  font-size: clamp(1rem, 0.875rem + 0.5vw, 1.125rem);
+  /* 16px - 18px */
+}
+
+.text-fluid-xl {
+  font-size: clamp(1.125rem, 1rem + 0.75vw, 1.5rem);
+  /* 18px - 24px */
+}
+
+.text-fluid-2xl {
+  font-size: clamp(1.5rem, 1.25rem + 1vw, 2rem);
+  /* 24px - 32px */
+}
+
+.text-fluid-3xl {
+  font-size: clamp(1.875rem, 1.5rem + 1.5vw, 2.5rem);
+  /* 30px - 40px */
+}
+
+.text-fluid-4xl {
+  font-size: clamp(2.25rem, 1.75rem + 2vw, 3.5rem);
+  /* 36px - 56px */
+}
+
+.text-fluid-5xl {
+  font-size: clamp(3rem, 2rem + 3vw, 5rem);
+  /* 48px - 80px */
+}
+
+.text-fluid-hero {
+  font-size: clamp(2.5rem, 1.5rem + 4vw, 6rem);
+  /* 40px - 96px */
+}
+
+/* Touch Target Utilities - Minimum 48x48px */
+.touch-target {
+  min-width: 48px;
+  min-height: 48px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.touch-target-lg {
+  min-width: 56px;
+  min-height: 56px;
+}
+
+/* Mobile-friendly button base */
+.btn-mobile {
+  min-height: 48px;
+  padding: 0.75rem 1.5rem;
+  touch-action: manipulation;
+}
+
+/* Active state for touch devices (replaces hover) */
+@media (hover: none) and (pointer: coarse) {
+  .touch-active:active {
+    transform: scale(0.97);
+    opacity: 0.9;
+  }
+}
+
+/* Safe area padding for notched devices */
+.safe-top {
+  padding-top: max(1rem, env(safe-area-inset-top));
+}
+
+.safe-bottom {
+  padding-bottom: max(1rem, env(safe-area-inset-bottom));
+}
+
+.safe-x {
+  padding-left: max(1rem, env(safe-area-inset-left));
+  padding-right: max(1rem, env(safe-area-inset-right));
+}
+
+/* Mobile section spacing */
+.section-mobile {
+  padding-top: clamp(2rem, 5vw, 4rem);
+  padding-bottom: clamp(2rem, 5vw, 4rem);
+}
+
+/* Prevent text overflow on mobile */
+.text-balance {
+  text-wrap: balance;
+}
+
+/* Stack layout helper */
+.stack-mobile {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+@media (min-width: 768px) {
+  .stack-mobile {
+    flex-direction: row;
+  }
+}
+
+/* Full-width on mobile, contained on desktop */
+.container-mobile {
+  width: 100%;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+@media (min-width: 640px) {
+  .container-mobile {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container-mobile {
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+
 
 /* ═══════════════════════════════════════════════════════════════════
    CINEMATIC ATMOSPHERE LAYERS
