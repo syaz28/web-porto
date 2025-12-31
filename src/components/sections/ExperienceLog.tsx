@@ -9,11 +9,19 @@ interface ExperienceEntry {
     organization: string;
     period: string;
     status: "RUNNING" | "ACTIVE" | "COMPLETED" | "AWARD";
-    type: "WORK" | "ORG" | "EVENT" | "CTF";
+    type: "WORK" | "ORG" | "EVENT" | "CTF" | "INTEL";
 }
 
 // REAL CV DATA with CTF Competitions
 const EXPERIENCE_DATA: ExperienceEntry[] = [
+    {
+        id: "INTEL_001",
+        role: "Cyber Intelligence Analyst Intern",
+        organization: "Subdit 3 Ditresiber Polda Jateng",
+        period: "Jan 2026 - June 2026",
+        status: "RUNNING",
+        type: "INTEL",
+    },
     {
         id: "WRK_001",
         role: "DevOps Intern",
@@ -125,6 +133,7 @@ function getTypeLabel(type: ExperienceEntry["type"]) {
         case "ORG": return { label: "ORG", color: "text-neon-green", barColor: "bg-neon-green" };
         case "EVENT": return { label: "EVENT", color: "text-neon-red", barColor: "bg-neon-red" };
         case "CTF": return { label: "CTF", color: "text-neon-yellow", barColor: "bg-neon-yellow" };
+        case "INTEL": return { label: "INTEL", color: "text-purple-400", barColor: "bg-purple-500" };
         default: return { label: "MISC", color: "text-gray-500", barColor: "bg-gray-500" };
     }
 }
@@ -456,6 +465,11 @@ export default function ExperienceLog() {
                     <span className="text-gray-400">TOTAL: <span className="text-white font-bold">{EXPERIENCE_DATA.length}</span></span>
                 </div>
             </motion.div>
+
+            {/* Slash Divider Bottom */}
+            <div className="absolute bottom-0 left-0 right-0 h-12 md:h-20 bg-gradient-to-r from-neon-red/5 via-neon-red/10 to-neon-red/5 skew-y-1 origin-right" />
+            <div className="absolute bottom-2 md:bottom-3 left-0 right-0 h-0.5 md:h-1 bg-gradient-to-r from-transparent via-neon-red to-transparent skew-y-1 origin-right"
+                style={{ boxShadow: "0 0 20px rgba(255,0,85,0.6), 0 0 40px rgba(255,0,85,0.3)" }} />
         </section>
     );
 }

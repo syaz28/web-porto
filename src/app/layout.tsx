@@ -3,6 +3,7 @@ import { JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import CyberScrollbar from "@/components/ui/CyberScrollbar";
 import CyberCursor from "@/components/ui/CyberCursor";
+import HeroNav from "@/components/ui/HeroNav";
 
 const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"],
@@ -26,8 +27,8 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "Syahrindra Rafli Santosa" }],
   openGraph: {
-    title: "SYAZ PROTOCOL | Security & DevOps Engineer",
-    description: "Portfolio of Syahrindra Rafli Santosa - Security & DevOps Engineer",
+    title: "SYAZ PORTOFOLIO PROJECT",
+    description: "Portfolio of Syahrindra Rafli Santosa",
     type: "website",
   },
 };
@@ -40,6 +41,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${jetbrainsMono.variable} antialiased`}>
+        <HeroNav />
         <CyberCursor />
         <CyberScrollbar />
         {children}

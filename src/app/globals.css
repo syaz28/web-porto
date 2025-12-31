@@ -58,7 +58,7 @@ html {
 }
 
 body {
-  background: var(--background);
+  background: transparent;
   color: var(--foreground);
   font-family: "JetBrains Mono", "Fira Code", "Courier New", monospace;
   line-height: 1.6;

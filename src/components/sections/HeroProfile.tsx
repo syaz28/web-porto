@@ -49,16 +49,29 @@ const GeometricBurst = () => {
 // DIGITAL PARTICLES (Rising Energy)
 // ============================================
 const DigitalParticles = () => {
-    const particles = useMemo(() =>
-        Array.from({ length: 25 }, (_, i) => ({
+    const [particles, setParticles] = useState<Array<{
+        id: number;
+        x: number;
+        delay: number;
+        duration: number;
+        size: number;
+        color: string;
+    }>>([]);
+
+    // Generate particles only on client side to avoid hydration mismatch
+    useEffect(() => {
+        const generated = Array.from({ length: 25 }, (_, i) => ({
             id: i,
             x: Math.random() * 100,
             delay: Math.random() * 4,
             duration: 3 + Math.random() * 3,
             size: 2 + Math.random() * 6,
             color: ["#00FFFF", "#FF0055", "#FFD700", "#00FF00"][i % 4],
-        })),
-        []);
+        }));
+        setParticles(generated);
+    }, []);
+
+    if (particles.length === 0) return null;
 
     return (
         <div className="absolute inset-0 overflow-hidden pointer-events-none z-20">
@@ -198,7 +211,7 @@ export default function HeroProfile() {
     };
 
     return (
-        <section ref={containerRef} className="relative min-h-screen overflow-hidden">
+        <section id="hero" ref={containerRef} className="relative min-h-screen overflow-hidden">
             {/* ═══════════════════════════════════════════════════════════════════════ */}
             {/* LAYER 0: MASSIVE BACKGROUND TYPOGRAPHY (To Be Hero X Style) */}
             {/* ═══════════════════════════════════════════════════════════════════════ */}
@@ -607,6 +620,11 @@ export default function HeroProfile() {
                     <div className="w-px h-10 md:h-14 bg-gradient-to-b from-neon-cyan to-transparent" />
                 </motion.div>
             </motion.div>
+
+            {/* Slash Divider Bottom */}
+            <div className="absolute bottom-0 left-0 right-0 h-12 md:h-20 bg-gradient-to-r from-neon-cyan/5 via-neon-cyan/10 to-neon-cyan/5 -skew-y-1 origin-left" />
+            <div className="absolute bottom-2 md:bottom-3 left-0 right-0 h-0.5 md:h-1 bg-gradient-to-r from-transparent via-neon-cyan to-transparent -skew-y-1 origin-left"
+                style={{ boxShadow: "0 0 20px rgba(0,255,255,0.6), 0 0 40px rgba(0,255,255,0.3)" }} />
         </section>
     );
 }

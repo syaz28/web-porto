@@ -26,6 +26,10 @@ const TECH_ICONS = [
     { name: "wireshark.svg", color: "#1679A7" },
     { name: "figma.svg", color: "#F24E1E" },
     { name: "archlinux.svg", color: "#1793D1" },
+    { name: "cplusplus.svg", color: "#00599C" },
+    { name: "openvpn.svg", color: "#EA7E20" },
+    { name: "torbrowser.svg", color: "#7D4698" },
+    { name: "vercel.svg", color: "#ffffff" },
 ];
 
 const HEXAGON_CLIP = "polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)";
@@ -135,7 +139,7 @@ function HexagonCard({ icon }: HexagonCardProps) {
 
 export default function TechArsenal() {
     return (
-        <section className="relative py-16 md:py-24 overflow-hidden">
+        <section id="tech" className="relative py-16 md:py-24 overflow-hidden">
             {/* Slash Divider Top */}
             <div className="absolute top-0 left-0 right-0 h-10 md:h-16 bg-neon-cyan/10 -skew-y-2 origin-left" />
             <div className="absolute top-1 md:top-2 left-0 right-0 h-1 md:h-2 bg-neon-cyan -skew-y-2 origin-left"
@@ -257,9 +261,9 @@ export default function TechArsenal() {
             </motion.div>
 
             {/* Slash Divider Bottom */}
-            <div className="absolute bottom-0 left-0 right-0 h-10 md:h-16 bg-neon-red/10 skew-y-2 origin-right" />
-            <div className="absolute bottom-1 md:bottom-2 left-0 right-0 h-1 md:h-2 bg-neon-red skew-y-2 origin-right"
-                style={{ boxShadow: "0 0 15px rgba(255,0,85,0.5)" }} />
+            <div className="absolute bottom-0 left-0 right-0 h-12 md:h-20 bg-gradient-to-r from-neon-green/5 via-neon-green/10 to-neon-green/5 skew-y-1 origin-right" />
+            <div className="absolute bottom-2 md:bottom-3 left-0 right-0 h-0.5 md:h-1 bg-gradient-to-r from-transparent via-neon-green to-transparent skew-y-1 origin-right"
+                style={{ boxShadow: "0 0 20px rgba(57,255,20,0.6), 0 0 40px rgba(57,255,20,0.3)" }} />
         </section>
     );
 }

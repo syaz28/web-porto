@@ -113,7 +113,7 @@ export default function ProjectShowcase() {
     };
 
     return (
-        <section className="relative py-16 md:py-24 overflow-hidden">
+        <section id="projects" className="relative py-16 md:py-24 overflow-hidden">
             {/* Background Effects */}
             <MatrixRain />
             <FloatingLocks />
@@ -411,6 +411,11 @@ export default function ProjectShowcase() {
                     </motion.div>
                 </div>
             </motion.div>
+
+            {/* Slash Divider Bottom */}
+            <div className="absolute bottom-0 left-0 right-0 h-12 md:h-20 bg-gradient-to-r from-purple-500/5 via-purple-500/10 to-purple-500/5 -skew-y-1 origin-left" />
+            <div className="absolute bottom-2 md:bottom-3 left-0 right-0 h-0.5 md:h-1 bg-gradient-to-r from-transparent via-purple-500 to-transparent -skew-y-1 origin-left"
+                style={{ boxShadow: "0 0 20px rgba(168,85,247,0.6), 0 0 40px rgba(168,85,247,0.3)" }} />
         </section>
     );
 }
