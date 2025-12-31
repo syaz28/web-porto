@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useEffect, useState, useMemo } from "react";
+import { useEffect, useState } from "react";
 
 // ═══════════════════════════════════════════════════════════════════════
 // BOKEH PARTICLE DATA
@@ -164,27 +164,22 @@ function CrossLightBeams() {
 // MAIN COMPONENT
 // ═══════════════════════════════════════════════════════════════════════
 export default function HeroXBackground() {
-    const [isMounted, setIsMounted] = useState(false);
+    const [particles, setParticles] = useState<BokehParticle[]>([]);
 
-    // Generate bokeh particles on client only
-    const particles = useMemo<BokehParticle[]>(() => {
-        if (typeof window === "undefined") return [];
-
+    // Generate bokeh particles on client only after mount
+    useEffect(() => {
         const colors = ["#00FFFF", "#FF0055", "#00FFFF", "#FF0055"];
-        return Array.from({ length: 15 }, (_, i) => ({
+        const generatedParticles = Array.from({ length: 15 }, (_, i) => ({
             id: i,
             x: 5 + Math.random() * 90,
             y: 10 + Math.random() * 80,
             size: 60 + Math.random() * 100,
             color: colors[i % colors.length],
-            opacity: 0.15 + Math.random() * 0.15, // More visible: 15-30%
+            opacity: 0.15 + Math.random() * 0.15,
             duration: 6 + Math.random() * 5,
             delay: Math.random() * 3,
         }));
-    }, []);
-
-    useEffect(() => {
-        setIsMounted(true);
+        setParticles(generatedParticles);
     }, []);
 
     return (
@@ -212,7 +207,7 @@ export default function HeroXBackground() {
             <CrossLightBeams />
 
             {/* ═══ BOKEH PARTICLES ═══ */}
-            {isMounted && particles.map((particle) => (
+            {particles.length > 0 && particles.map((particle) => (
                 <BokehParticle key={particle.id} particle={particle} />
             ))}
 

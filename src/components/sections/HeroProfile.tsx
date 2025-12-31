@@ -362,8 +362,8 @@ export default function HeroProfile() {
                             <div className="text-neon-cyan mb-2 md:mb-3 font-bold text-xs md:text-sm">$ whoami</div>
                             <p className="text-gray-200 leading-relaxed text-xs sm:text-sm">
                                 Informatics Engineering student specializing in <span className="text-neon-cyan font-bold">Cyber Security</span>,
-                                <span className="text-neon-yellow font-bold"> Network Infrastructure</span>, and
-                                <span className="text-neon-green font-bold"> DevOps Automation</span>. Actively honing skills through CTF competitions
+                                <span className="text-neon-yellow font-bold"> DevOps Automation</span>, and
+                                <span className="text-neon-green font-bold"> Web Developer</span>. Actively honing skills through CTF competitions
                                 and organizational leadership. Dedicated to mastering digital threat landscapes and building secure, resilient deployment pipelines.
                             </p>
                             <div className="mt-3 md:mt-4 flex flex-wrap gap-2 md:gap-4 text-[10px] md:text-xs">

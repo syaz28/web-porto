@@ -4,32 +4,64 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import { useState } from "react";
 
-// Tech icons with brand colors
+// Tech icons with brand colors - ALL ICONS
 const TECH_ICONS = [
+    // === SECURITY & HACKING ===
     { name: "kalilinux.svg", color: "#557C94" },
+    { name: "metasploit.svg", color: "#2596CD" },
+    { name: "burpsuite.svg", color: "#FF6633" },
+    { name: "wireshark.svg", color: "#1679A7" },
+    { name: "hackthebox.svg", color: "#9FEF00" },
+    { name: "tryhackme.svg", color: "#FF0055" },
+    { name: "cyberdefenders.svg", color: "#00D4FF" },
+    { name: "owasp.svg", color: "#ffffff" },
+    { name: "torbrowser.svg", color: "#7D4698" },
+    { name: "openvpn.svg", color: "#EA7E20" },
+
+    // === DEVOPS & INFRASTRUCTURE ===
     { name: "docker.svg", color: "#2496ED" },
-    { name: "python.svg", color: "#3776AB" },
-    { name: "react.svg", color: "#61DAFB" },
     { name: "kubernetes.svg", color: "#326CE5" },
-    { name: "linux.svg", color: "#FCC624" },
-    { name: "git.svg", color: "#F05032" },
-    { name: "github.svg", color: "#ffffff" },
     { name: "jenkins.svg", color: "#D24939" },
     { name: "nginx.svg", color: "#009639" },
-    { name: "postgresql.svg", color: "#4169E1" },
+    { name: "grafana.svg", color: "#F46800" },
+
+    // === PROGRAMMING LANGUAGES ===
+    { name: "python.svg", color: "#3776AB" },
     { name: "typescript.svg", color: "#3178C6" },
+    { name: "javascript.svg", color: "#F7DF1E" },
+    { name: "php.svg", color: "#777BB4" },
+    { name: "cplusplus.svg", color: "#00599C" },
+    { name: "gnubash.svg", color: "#4EAA25" },
+    { name: "assemblyscript.svg", color: "#007AAC" },
+
+    // === WEB FRAMEWORKS ===
+    { name: "react.svg", color: "#61DAFB" },
     { name: "nextdotjs.svg", color: "#ffffff" },
     { name: "nodedotjs.svg", color: "#5FA04E" },
+    { name: "laravel.svg", color: "#FF2D20" },
     { name: "tailwindcss.svg", color: "#06B6D4" },
-    { name: "gnubash.svg", color: "#4EAA25" },
-    { name: "metasploit.svg", color: "#2596CD" },
-    { name: "wireshark.svg", color: "#1679A7" },
-    { name: "figma.svg", color: "#F24E1E" },
+    { name: "bootstrap.svg", color: "#7952B3" },
+    { name: "html5.svg", color: "#E34F26" },
+
+    // === DATABASES ===
+    { name: "postgresql.svg", color: "#4169E1" },
+    { name: "mysql.svg", color: "#4479A1" },
+
+    // === OPERATING SYSTEMS ===
+    { name: "linux.svg", color: "#FCC624" },
     { name: "archlinux.svg", color: "#1793D1" },
-    { name: "cplusplus.svg", color: "#00599C" },
-    { name: "openvpn.svg", color: "#EA7E20" },
-    { name: "torbrowser.svg", color: "#7D4698" },
+    { name: "ubuntu.svg", color: "#E95420" },
+
+    // === TOOLS & PLATFORMS ===
+    { name: "git.svg", color: "#F05032" },
+    { name: "github.svg", color: "#ffffff" },
     { name: "vercel.svg", color: "#ffffff" },
+    { name: "figma.svg", color: "#F24E1E" },
+    { name: "wordpress.svg", color: "#21759B" },
+    { name: "unity.svg", color: "#ffffff" },
+    { name: "tensorflow.svg", color: "#FF6F00" },
+    { name: "xampp.svg", color: "#FB7A24" },
+    { name: "laragon.svg", color: "#0E83CD" },
 ];
 
 const HEXAGON_CLIP = "polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)";
@@ -243,7 +275,7 @@ export default function TechArsenal() {
                                 textShadow: "2px 2px 0px #000"
                             }}
                         >
-                            5+
+                            3+
                         </div>
                         <div className="terminal-text text-gray-400 text-[10px] md:text-xs mt-1 md:mt-2 tracking-widest">YEARS_EXP</div>
                     </div>
