@@ -238,7 +238,7 @@ function MobileMenu({ isOpen, onClose, activeSection }: {
                         </div>
 
                         {/* Footer - Safe area padding */}
-                        <div className="absolute bottom-0 left-0 right-0 p-6 pb-[max(1.5rem,env(safe-area-inset-bottom))] border-t border-gray-800">
+                        <div className="absolute bottom-0 left-0 right-0 p-6 safe-bottom border-t border-gray-800">
                             <div className="font-mono text-[10px] text-gray-600 mb-2">SYSTEM_STATUS</div>
                             <div className="flex items-center gap-2">
                                 <motion.div
