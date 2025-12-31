@@ -435,7 +435,7 @@ export default function ExperienceLog() {
                         </div>
 
                         {/* Footer */}
-                        <div className="px-3 md:px-5 py-2 md:py-3 bg-[#050505] border-t-2 border-neon-cyan/30 flex items-center justify-between">
+                        <div className="px-3 md:px-5 py-2 md:py-3 bg-[#050505] border-t-2 border-neon-cyan/30 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-1 sm:gap-0">
                             <span className="terminal-text text-neon-cyan text-[10px] md:text-xs font-bold">
                                 [{EXPERIENCE_DATA.length} ENTRIES LOADED]<span className="cursor-blink" />
                             </span>

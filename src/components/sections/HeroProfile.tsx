@@ -373,17 +373,17 @@ export default function HeroProfile() {
                             </div>
                         </motion.div>
 
-                        <motion.div variants={snapVariants} className="mt-6 md:mt-8 flex flex-col sm:flex-row justify-center lg:justify-start gap-3 md:gap-4">
+                        <motion.div variants={snapVariants} className="mt-6 md:mt-8 flex flex-col sm:flex-row justify-center lg:justify-start gap-4">
                             <a
                                 href="#experience"
-                                className="px-6 md:px-8 py-3 md:py-4 bg-neon-cyan text-black font-black uppercase tracking-wider text-xs md:text-sm transition-all duration-200 hover:translate-x-1 hover:-translate-y-1 hover:shadow-[4px_4px_0px_#000] text-center"
+                                className="px-6 md:px-8 py-4 bg-neon-cyan text-black font-black uppercase tracking-wider text-xs md:text-sm transition-all duration-200 hover:translate-x-1 hover:-translate-y-1 hover:shadow-[4px_4px_0px_#000] text-center min-h-[48px] flex items-center justify-center"
                                 style={{ clipPath: "polygon(5% 0, 100% 0, 95% 100%, 0 100%)" }}
                             >
                                 VIEW_LOGS
                             </a>
                             <a
                                 href="mailto:rafli.santosa28@gmail.com"
-                                className="px-6 md:px-8 py-3 md:py-4 border-2 border-neon-red bg-transparent text-neon-red font-black uppercase tracking-wider text-xs md:text-sm transition-all duration-200 hover:bg-neon-red hover:text-black text-center"
+                                className="px-6 md:px-8 py-4 border-2 border-neon-red bg-transparent text-neon-red font-black uppercase tracking-wider text-xs md:text-sm transition-all duration-200 hover:bg-neon-red hover:text-black text-center min-h-[48px] flex items-center justify-center"
                                 style={{ clipPath: "polygon(5% 0, 100% 0, 95% 100%, 0 100%)" }}
                             >
                                 CONTACT_ME
@@ -604,20 +604,20 @@ export default function HeroProfile() {
                 </div>
             </div>
 
-            {/* Scroll Indicator */}
+            {/* Scroll Indicator - Hidden on small mobile, shown on md+ */}
             <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 1.5 }}
-                className="absolute bottom-4 md:bottom-8 left-1/2 -translate-x-1/2 z-50"
+                className="absolute bottom-16 md:bottom-8 left-1/2 -translate-x-1/2 z-50 hidden sm:block"
             >
                 <motion.div
                     animate={{ y: [0, 12, 0] }}
                     transition={{ duration: 1.5, repeat: Infinity }}
-                    className="flex flex-col items-center gap-1 md:gap-2"
+                    className="flex flex-col items-center gap-2"
                 >
-                    <span className="terminal-text text-neon-cyan text-[10px] md:text-xs tracking-widest font-bold">SCROLL</span>
-                    <div className="w-px h-10 md:h-14 bg-gradient-to-b from-neon-cyan to-transparent" />
+                    <span className="terminal-text text-neon-cyan text-xs tracking-widest font-bold">SCROLL</span>
+                    <div className="w-px h-14 bg-gradient-to-b from-neon-cyan to-transparent" />
                 </motion.div>
             </motion.div>
 
