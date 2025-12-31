@@ -7,10 +7,11 @@ export default function CyberScrollbar() {
     const { scrollYProgress } = useScroll();
     const [scrollPercent, setScrollPercent] = useState(0);
     const [isDragging, setIsDragging] = useState(false);
-    const [isMobile, setIsMobile] = useState(false);
+    // Start as null to indicate "not yet determined" - prevents hydration mismatch
+    const [isMobile, setIsMobile] = useState<boolean | null>(null);
     const trackRef = useRef<HTMLDivElement>(null);
 
-    // Detect mobile on mount
+    // Detect mobile on mount - only runs on client
     useEffect(() => {
         const checkMobile = () => {
             setIsMobile(window.innerWidth < 768);
@@ -20,10 +21,7 @@ export default function CyberScrollbar() {
         return () => window.removeEventListener("resize", checkMobile);
     }, []);
 
-    // Hide on mobile - native scroll is better for touch
-    if (isMobile) return null;
-
-    // Very smooth spring
+    // Very smooth spring - must be called unconditionally (React hooks rules)
     const smoothProgress = useSpring(scrollYProgress, {
         stiffness: 80,
         damping: 20,
@@ -36,6 +34,10 @@ export default function CyberScrollbar() {
     useMotionValueEvent(scrollYProgress, "change", (latest) => {
         setScrollPercent(Math.round(latest * 100));
     });
+
+    // Hide on mobile OR during SSR (isMobile === null means not yet determined)
+    // This return is AFTER all hooks to comply with React's rules of hooks
+    if (isMobile === null || isMobile === true) return null;
 
     const scrollToProgress = useCallback((progress: number) => {
         const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
