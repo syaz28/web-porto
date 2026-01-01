@@ -1,36 +1,52 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# SYAZ.PROTOCOL
 
-## Getting Started
+> **Personal Portfolio Website** by Syahrindra Rafli Santosa  
+> A Cyber-Anime aesthetic portfolio showcasing Cyber Security, DevOps, and Web Development expertise.
 
-First, run the development server:
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-syzz.vercel.app-00FFFF?style=for-the-badge)](https://syzz.vercel.app)
+
+---
+
+## ⚠️ License & Copyright Notice
+
+**© 2026 Syahrindra Rafli Santosa. All Rights Reserved.**
+
+This project is licensed under the **[CC BY-NC-ND 4.0](./LICENSE.md)** (Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License).
+
+### 🚫 What This Means:
+
+- **NO Commercial Use** — You may NOT use this code for commercial purposes
+- **NO Derivatives** — You may NOT copy, modify, or create derivative works based on this design
+- **NO Plagiarism** — Unauthorized copying or claiming this work as your own is strictly prohibited
+- **Attribution Required** — If referencing this project, you must give appropriate credit
+
+For permissions beyond this license, contact: **rafli.santosa28@gmail.com**
+
+---
+
+## 🚀 Tech Stack
+
+- **Framework:** Next.js 14 (App Router)
+- **Styling:** Tailwind CSS
+- **Animations:** Framer Motion
+- **Language:** TypeScript
+
+---
+
+## 🛠️ Getting Started
 
 ```bash
+# Install dependencies
+npm install
+
+# Run development server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) to view the site.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 📄 License
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+See [LICENSE.md](./LICENSE.md) for full license details.
