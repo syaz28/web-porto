@@ -110,6 +110,30 @@ const EXPERIENCE_DATA: ExperienceEntry[] = [
         status: "AWARD",
         type: "CTF",
     },
+    {
+        id: "CTF_006",
+        role: "CTF Participant",
+        organization: "TSA Cyber Champion - KOMDIGI",
+        period: "2025",
+        status: "AWARD",
+        type: "CTF",
+    },
+    {
+        id: "CTF_007",
+        role: "CTF Participant",
+        organization: "NETCOMP - UGM",
+        period: "2024",
+        status: "AWARD",
+        type: "CTF",
+    },
+    {
+        id: "CTF_008",
+        role: "CTF Participant",
+        organization: "FIT Competition - UKSW",
+        period: "2025",
+        status: "AWARD",
+        type: "CTF",
+    },
 ];
 
 function getStatusStyles(status: ExperienceEntry["status"]) {
