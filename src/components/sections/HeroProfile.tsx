@@ -151,9 +151,30 @@ export default function HeroProfile() {
     const [isHovering, setIsHovering] = useState(false);
     const [isMounted, setIsMounted] = useState(false);
 
+    // Glitch animation states
+    const [autoGlitch, setAutoGlitch] = useState(false);
+    const [isHacked, setIsHacked] = useState(false);
+
     useEffect(() => {
         setIsMounted(true);
     }, []);
+
+    // Auto glitch loop every 3 seconds (subtle)
+    useEffect(() => {
+        if (!isMounted) return;
+        const interval = setInterval(() => {
+            setAutoGlitch(true);
+            setTimeout(() => setAutoGlitch(false), 150);
+        }, 3000);
+        return () => clearInterval(interval);
+    }, [isMounted]);
+
+    // Click handler for "hacked" effect
+    const handleNameClick = () => {
+        if (isHacked) return; // Prevent spam
+        setIsHacked(true);
+        setTimeout(() => setIsHacked(false), 800);
+    };
 
     // Scroll-based parallax
     const { scrollYProgress } = useScroll({
@@ -305,7 +326,7 @@ export default function HeroProfile() {
                         variants={containerVariants}
                         initial="hidden"
                         animate="visible"
-                        className="order-2 lg:order-1 text-center lg:text-left"
+                        className="order-2 lg:order-1 text-left"
                     >
                         <motion.div variants={snapVariants} className="mb-3 md:mb-4">
                             <span className="terminal-text text-neon-cyan/80 text-[10px] md:text-xs">
@@ -313,42 +334,111 @@ export default function HeroProfile() {
                             </span>
                         </motion.div>
 
-                        <motion.h1 variants={snapVariants} className="mb-3 md:mb-4 leading-[0.9]">
-                            <span
+                        <motion.h1
+                            variants={snapVariants}
+                            className="mb-3 md:mb-4 leading-[0.9] cursor-pointer select-none text-left"
+                            onClick={handleNameClick}
+                            animate={
+                                isHacked
+                                    ? {
+                                        x: [0, -8, 12, -6, 10, -4, 6, 0],
+                                        y: [0, 3, -5, 4, -3, 2, -1, 0],
+                                        skewX: [0, -5, 8, -6, 4, -2, 0],
+                                    }
+                                    : autoGlitch
+                                        ? { x: [0, -3, 3, 0], y: [0, 1, -1, 0] }
+                                        : {}
+                            }
+                            transition={{ duration: isHacked ? 0.6 : 0.1 }}
+                        >
+                            {/* Glitch slice overlay for hacked effect */}
+                            {isHacked && (
+                                <motion.div
+                                    className="absolute inset-0 pointer-events-none overflow-hidden z-50"
+                                    initial={{ opacity: 1 }}
+                                    animate={{ opacity: [1, 0.5, 1, 0.3, 1] }}
+                                    transition={{ duration: 0.4 }}
+                                >
+                                    {[...Array(6)].map((_, i) => (
+                                        <motion.div
+                                            key={i}
+                                            className="absolute left-0 right-0 h-[4px]"
+                                            style={{
+                                                top: `${15 + i * 15}%`,
+                                                background: "linear-gradient(90deg, transparent, rgba(0,255,255,0.8), rgba(255,0,85,0.8), transparent)",
+                                            }}
+                                            initial={{ x: "-100%" }}
+                                            animate={{ x: ["100%", "-100%"] }}
+                                            transition={{ duration: 0.15, delay: i * 0.05 }}
+                                        />
+                                    ))}
+                                </motion.div>
+                            )}
+
+                            <motion.span
                                 className="block text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black tracking-tight uppercase"
                                 style={{
                                     fontFamily: "Impact, 'Arial Black', sans-serif",
                                     color: "#ffffff",
-                                    WebkitTextStroke: "1px #00FFFF",
-                                    textShadow: "3px 3px 0px #000, 4px 4px 0px rgba(0,255,255,0.3)",
-                                    filter: "drop-shadow(0 0 8px rgba(0,255,255,0.4))"
+                                    WebkitTextStroke: isHacked ? "2px #FF0055" : "1px #00FFFF",
+                                    textShadow: isHacked
+                                        ? "0 0 15px #FF0055, 0 0 30px #00FFFF, 3px 3px 0px #000"
+                                        : autoGlitch
+                                            ? "0 0 10px rgba(0,255,255,0.7), 3px 3px 0px #000"
+                                            : "3px 3px 0px #000, 4px 4px 0px rgba(0,255,255,0.3)",
+                                    filter: isHacked
+                                        ? "brightness(1.2)"
+                                        : "drop-shadow(0 0 8px rgba(0,255,255,0.4))",
                                 }}
+                                animate={
+                                    isHacked
+                                        ? { x: [0, -2, 2, -1, 1, 0], opacity: [1, 0.8, 1, 0.7, 1] }
+                                        : {}
+                                }
+                                transition={{ duration: 0.2, repeat: isHacked ? 3 : 0 }}
                             >
                                 {scrambledName}
-                            </span>
-                            <span
+                            </motion.span>
+                            <motion.span
                                 className="block text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl font-bold tracking-wide mt-2 md:mt-3 uppercase"
                                 style={{
                                     fontFamily: "'JetBrains Mono', monospace",
-                                    color: "#e0e0e0",
-                                    textShadow: "2px 2px 0px #000"
+                                    color: isHacked ? "#FF0055" : "#e0e0e0",
+                                    textShadow: isHacked
+                                        ? "0 0 10px #00FFFF, 2px 2px 0px #000"
+                                        : autoGlitch
+                                            ? "0 0 5px rgba(255,0,85,0.4), 2px 2px 0px #000"
+                                            : "2px 2px 0px #000",
                                 }}
                             >
-                                {scrambledSurname}
-                            </span>
+                                {isHacked ? ">> SYSTEM_BREACH <<" : scrambledSurname}
+                            </motion.span>
                         </motion.h1>
 
                         <motion.div variants={snapVariants} className="mb-6 md:mb-8">
-                            <h2
-                                className="terminal-text text-sm sm:text-base md:text-lg lg:text-xl tracking-wider md:tracking-widest"
+                            <motion.h2
+                                className="terminal-text text-sm sm:text-base md:text-lg lg:text-xl tracking-wider md:tracking-widest cursor-pointer"
+                                onClick={handleNameClick}
                                 style={{
-                                    color: "#FF0055",
-                                    textShadow: "0 0 8px rgba(255,0,85,0.6), 2px 2px 0px #000"
+                                    color: isHacked ? "#00FFFF" : "#FF0055",
+                                    textShadow: isHacked
+                                        ? "-2px 0 #FF0055, 2px 0 #00FFFF, 0 0 15px rgba(0,255,255,0.8)"
+                                        : autoGlitch
+                                            ? "-1px 0 rgba(0,255,255,0.5), 1px 0 rgba(255,0,85,0.5), 0 0 8px rgba(255,0,85,0.6)"
+                                            : "0 0 8px rgba(255,0,85,0.6), 2px 2px 0px #000",
                                 }}
+                                animate={
+                                    isHacked
+                                        ? { x: [0, 4, -4, 3, -3, 0], opacity: [1, 0.7, 1, 0.5, 1] }
+                                        : autoGlitch
+                                            ? { x: [0, -1, 1, 0] }
+                                            : {}
+                                }
+                                transition={{ duration: isHacked ? 0.4 : 0.1 }}
                             >
-                                {scrambledTitle}
+                                {isHacked ? "ACCESS_GRANTED // WELCOME_HACKER" : scrambledTitle}
                                 <span className="cursor-blink" />
-                            </h2>
+                            </motion.h2>
                         </motion.div>
 
                         <motion.div
@@ -625,6 +715,6 @@ export default function HeroProfile() {
             <div className="absolute bottom-0 left-0 right-0 h-12 md:h-20 bg-gradient-to-r from-neon-cyan/5 via-neon-cyan/10 to-neon-cyan/5 -skew-y-1 origin-left" />
             <div className="absolute bottom-2 md:bottom-3 left-0 right-0 h-0.5 md:h-1 bg-gradient-to-r from-transparent via-neon-cyan to-transparent -skew-y-1 origin-left"
                 style={{ boxShadow: "0 0 20px rgba(0,255,255,0.6), 0 0 40px rgba(0,255,255,0.3)" }} />
-        </section>
+        </section >
     );
 }
