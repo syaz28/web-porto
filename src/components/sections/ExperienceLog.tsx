@@ -467,9 +467,9 @@ export default function ExperienceLog() {
             </motion.div>
 
             {/* Slash Divider Bottom */}
-            <div className="absolute bottom-0 left-0 right-0 h-12 md:h-20 bg-gradient-to-r from-neon-red/5 via-neon-red/10 to-neon-red/5 skew-y-1 origin-right" />
-            <div className="absolute bottom-2 md:bottom-3 left-0 right-0 h-0.5 md:h-1 bg-gradient-to-r from-transparent via-neon-red to-transparent skew-y-1 origin-right"
-                style={{ boxShadow: "0 0 20px rgba(255,0,85,0.6), 0 0 40px rgba(255,0,85,0.3)" }} />
+            <div className="absolute bottom-0 left-0 right-0 h-12 md:h-20 bg-gradient-to-r from-neon-red/5 via-purple-500/10 to-neon-red/5 skew-y-1 origin-right" />
+            <div className="absolute bottom-2 md:bottom-3 left-0 right-0 h-0.5 md:h-1 bg-gradient-to-r from-neon-red via-purple-500 to-neon-red skew-y-1 origin-right"
+                style={{ boxShadow: "0 0 20px rgba(255,0,85,0.5), 0 0 40px rgba(139,92,246,0.3)" }} />
         </section>
     );
 }

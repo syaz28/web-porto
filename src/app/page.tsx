@@ -50,10 +50,10 @@ export default function Home() {
           className="relative py-16 md:py-20 px-6 overflow-hidden"
         >
           {/* Slash Divider Top with Neon Glow */}
-          <div className="absolute top-0 left-0 right-0 h-16 md:h-24 bg-gradient-to-r from-neon-cyan/5 via-neon-cyan/10 to-neon-cyan/5 -skew-y-1 origin-left" />
+          <div className="absolute top-0 left-0 right-0 h-16 md:h-24 bg-gradient-to-r from-neon-cyan/5 via-neon-yellow/10 to-neon-cyan/5 -skew-y-1 origin-left" />
           <div
-            className="absolute top-3 md:top-4 left-0 right-0 h-0.5 md:h-1 bg-gradient-to-r from-transparent via-neon-cyan to-transparent -skew-y-1 origin-left"
-            style={{ boxShadow: "0 0 20px rgba(0,255,255,0.8), 0 0 40px rgba(0,255,255,0.4), 0 0 60px rgba(0,255,255,0.2)" }}
+            className="absolute top-3 md:top-4 left-0 right-0 h-0.5 md:h-1 bg-gradient-to-r from-neon-cyan via-neon-yellow to-neon-cyan -skew-y-1 origin-left"
+            style={{ boxShadow: "0 0 20px rgba(0,255,255,0.5), 0 0 40px rgba(250,204,21,0.4)" }}
           />
 
           {/* Halftone Dot Pattern Background */}

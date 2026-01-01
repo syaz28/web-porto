@@ -543,9 +543,9 @@ export default function Module5Certificates() {
             </div>
 
             {/* Slash Divider Bottom */}
-            <div className="absolute bottom-0 left-0 right-0 h-12 md:h-20 bg-gradient-to-r from-neon-yellow/5 via-neon-yellow/10 to-neon-yellow/5 -skew-y-1 origin-left" />
-            <div className="absolute bottom-2 md:bottom-3 left-0 right-0 h-0.5 md:h-1 bg-gradient-to-r from-transparent via-neon-yellow to-transparent -skew-y-1 origin-left"
-                style={{ boxShadow: "0 0 20px rgba(250,204,21,0.6), 0 0 40px rgba(250,204,21,0.3)" }} />
+            <div className="absolute bottom-0 left-0 right-0 h-12 md:h-20 bg-gradient-to-r from-neon-yellow/5 via-neon-cyan/10 to-neon-yellow/5 -skew-y-1 origin-left" />
+            <div className="absolute bottom-2 md:bottom-3 left-0 right-0 h-0.5 md:h-1 bg-gradient-to-r from-neon-yellow via-neon-cyan to-neon-yellow -skew-y-1 origin-left"
+                style={{ boxShadow: "0 0 20px rgba(250,204,21,0.5), 0 0 40px rgba(0,255,255,0.3)" }} />
         </section>
     );
 }

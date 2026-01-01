@@ -177,9 +177,9 @@ export default function TechArsenal() {
     return (
         <section id="tech" className="relative py-16 md:py-24 overflow-hidden">
             {/* Slash Divider Top */}
-            <div className="absolute top-0 left-0 right-0 h-10 md:h-16 bg-neon-cyan/10 -skew-y-2 origin-left" />
-            <div className="absolute top-1 md:top-2 left-0 right-0 h-1 md:h-2 bg-neon-cyan -skew-y-2 origin-left"
-                style={{ boxShadow: "0 0 15px rgba(0,255,255,0.5)" }} />
+            <div className="absolute top-0 left-0 right-0 h-10 md:h-16 bg-gradient-to-r from-neon-cyan/5 via-neon-red/10 to-neon-cyan/5 -skew-y-2 origin-left" />
+            <div className="absolute top-1 md:top-2 left-0 right-0 h-1 md:h-2 bg-gradient-to-r from-neon-cyan via-neon-red to-neon-cyan -skew-y-2 origin-left"
+                style={{ boxShadow: "0 0 15px rgba(0,255,255,0.5), 0 0 30px rgba(255,0,85,0.3)" }} />
 
             {/* Section Header */}
             <div className="container mx-auto px-4 sm:px-6 mb-10 md:mb-16 pt-6 md:pt-8">
@@ -297,9 +297,9 @@ export default function TechArsenal() {
             </motion.div>
 
             {/* Slash Divider Bottom */}
-            <div className="absolute bottom-0 left-0 right-0 h-12 md:h-20 bg-gradient-to-r from-neon-green/5 via-neon-green/10 to-neon-green/5 skew-y-1 origin-right" />
-            <div className="absolute bottom-2 md:bottom-3 left-0 right-0 h-0.5 md:h-1 bg-gradient-to-r from-transparent via-neon-green to-transparent skew-y-1 origin-right"
-                style={{ boxShadow: "0 0 20px rgba(57,255,20,0.6), 0 0 40px rgba(57,255,20,0.3)" }} />
+            <div className="absolute bottom-0 left-0 right-0 h-12 md:h-20 bg-gradient-to-r from-neon-green/5 via-neon-cyan/10 to-neon-green/5 skew-y-1 origin-right" />
+            <div className="absolute bottom-2 md:bottom-3 left-0 right-0 h-0.5 md:h-1 bg-gradient-to-r from-neon-green via-neon-cyan to-neon-green skew-y-1 origin-right"
+                style={{ boxShadow: "0 0 20px rgba(57,255,20,0.5), 0 0 40px rgba(0,255,255,0.3)" }} />
         </section>
     );
 }
