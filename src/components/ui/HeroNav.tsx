@@ -2,6 +2,7 @@
 
 import { motion, useScroll, useMotionValueEvent, AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
+import Image from "next/image";
 
 // ═══════════════════════════════════════════════════════════════════════
 // NAV ITEMS DATA
@@ -30,64 +31,85 @@ function GlitchBrand() {
 
     return (
         <motion.div
-            className="relative cursor-pointer select-none"
+            className="relative cursor-pointer select-none flex items-center gap-2"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
         >
-            {/* Main Text */}
-            <span
-                className="text-lg md:text-xl font-black tracking-tighter"
+            {/* Icon with Cyan Glow */}
+            <motion.div
+                className="relative w-8 h-8 md:w-9 md:h-9"
+                animate={isGlitching ? { x: [-2, 2, -1, 1, 0], opacity: [1, 0.7, 1] } : {}}
+                transition={{ duration: 0.15 }}
                 style={{
-                    fontFamily: "Impact, 'Arial Black', sans-serif",
-                    color: "#00FFFF",
-                    textShadow: isGlitching
-                        ? "-2px 0 #FF0055, 2px 0 #00FFFF"
-                        : "0 0 10px rgba(0,255,255,0.5)",
+                    filter: isGlitching
+                        ? "drop-shadow(-2px 0 #FF0055) drop-shadow(2px 0 #00FFFF)"
+                        : "drop-shadow(0 0 8px rgba(0,255,255,0.9)) drop-shadow(0 0 16px rgba(0,255,255,0.5))",
                 }}
             >
-                SYAZ
-            </span>
-            <span
-                className="text-lg md:text-xl font-black tracking-tighter ml-1"
-                style={{
-                    fontFamily: "Impact, 'Arial Black', sans-serif",
-                    color: "#FF0055",
-                    textShadow: isGlitching
-                        ? "2px 0 #00FFFF, -2px 0 #FF0055"
-                        : "0 0 10px rgba(255,0,85,0.5)",
-                }}
-            >
-                .PROTOCOL
-            </span>
+                <Image
+                    src="/icon.png"
+                    alt="SYAZ Protocol Icon"
+                    fill
+                    className="object-contain"
+                />
+            </motion.div>
 
-            {/* Glitch Layers */}
-            {isGlitching && (
-                <>
-                    <span
-                        className="absolute top-0 left-0 text-lg md:text-xl font-black tracking-tighter opacity-70"
-                        style={{
-                            fontFamily: "Impact, 'Arial Black', sans-serif",
-                            color: "#FF0055",
-                            clipPath: "polygon(0 0, 100% 0, 100% 45%, 0 45%)",
-                            transform: "translateX(-2px)",
-                        }}
-                    >
-                        SYAZ.PROTOCOL
-                    </span>
-                    <span
-                        className="absolute top-0 left-0 text-lg md:text-xl font-black tracking-tighter opacity-70"
-                        style={{
-                            fontFamily: "Impact, 'Arial Black', sans-serif",
-                            color: "#00FFFF",
-                            clipPath: "polygon(0 55%, 100% 55%, 100% 100%, 0 100%)",
-                            transform: "translateX(2px)",
-                        }}
-                    >
-                        SYAZ.PROTOCOL
-                    </span>
-                </>
-            )}
+            {/* Main Text */}
+            <div className="relative">
+                <span
+                    className="text-lg md:text-xl font-black tracking-tighter"
+                    style={{
+                        fontFamily: "Impact, 'Arial Black', sans-serif",
+                        color: "#00FFFF",
+                        textShadow: isGlitching
+                            ? "-2px 0 #FF0055, 2px 0 #00FFFF"
+                            : "0 0 10px rgba(0,255,255,0.9), 0 0 20px rgba(0,255,255,0.5)",
+                    }}
+                >
+                    SYAZ
+                </span>
+                <span
+                    className="text-lg md:text-xl font-black tracking-tighter ml-1"
+                    style={{
+                        fontFamily: "Impact, 'Arial Black', sans-serif",
+                        color: "#FF0055",
+                        textShadow: isGlitching
+                            ? "2px 0 #00FFFF, -2px 0 #FF0055"
+                            : "0 0 10px rgba(255,0,85,0.5)",
+                    }}
+                >
+                    .PROTOCOL
+                </span>
+
+                {/* Glitch Layers */}
+                {isGlitching && (
+                    <>
+                        <span
+                            className="absolute top-0 left-0 text-lg md:text-xl font-black tracking-tighter opacity-70"
+                            style={{
+                                fontFamily: "Impact, 'Arial Black', sans-serif",
+                                color: "#FF0055",
+                                clipPath: "polygon(0 0, 100% 0, 100% 45%, 0 45%)",
+                                transform: "translateX(-2px)",
+                            }}
+                        >
+                            SYAZ.PROTOCOL
+                        </span>
+                        <span
+                            className="absolute top-0 left-0 text-lg md:text-xl font-black tracking-tighter opacity-70"
+                            style={{
+                                fontFamily: "Impact, 'Arial Black', sans-serif",
+                                color: "#00FFFF",
+                                clipPath: "polygon(0 55%, 100% 55%, 100% 100%, 0 100%)",
+                                transform: "translateX(2px)",
+                            }}
+                        >
+                            SYAZ.PROTOCOL
+                        </span>
+                    </>
+                )}
+            </div>
 
             {/* Status Indicator */}
             <motion.div

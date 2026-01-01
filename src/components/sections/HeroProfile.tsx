@@ -232,7 +232,7 @@ export default function HeroProfile() {
     };
 
     return (
-        <section id="hero" ref={containerRef} className="relative min-h-screen overflow-hidden">
+        <section id="hero" ref={containerRef} className="relative min-h-screen overflow-x-clip">
             {/* ═══════════════════════════════════════════════════════════════════════ */}
             {/* LAYER 0: MASSIVE BACKGROUND TYPOGRAPHY (To Be Hero X Style) */}
             {/* ═══════════════════════════════════════════════════════════════════════ */}
@@ -318,15 +318,15 @@ export default function HeroProfile() {
             {/* ═══════════════════════════════════════════════════════════════════════ */}
             {/* MAIN CONTENT GRID */}
             {/* ═══════════════════════════════════════════════════════════════════════ */}
-            <div className="relative z-50 container mx-auto max-w-7xl px-4 sm:px-6 py-12 md:py-20 min-h-screen flex items-center">
-                <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center w-full">
+            <div className="relative z-50 container mx-auto max-w-7xl px-8 sm:px-12 py-12 md:py-20 min-h-screen flex items-center">
+                <div className="grid lg:grid-cols-[1.4fr_0.6fr] gap-8 lg:gap-20 items-center w-full">
 
                     {/* ═══ TEXT CONTENT SIDE ═══ */}
                     <motion.div
                         variants={containerVariants}
                         initial="hidden"
                         animate="visible"
-                        className="order-2 lg:order-1 text-left"
+                        className="order-2 lg:order-1 text-left overflow-visible max-w-4xl ml-2 lg:ml-4"
                     >
                         <motion.div variants={snapVariants} className="mb-3 md:mb-4">
                             <span className="terminal-text text-neon-cyan/80 text-[10px] md:text-xs">
@@ -336,17 +336,17 @@ export default function HeroProfile() {
 
                         <motion.h1
                             variants={snapVariants}
-                            className="mb-3 md:mb-4 leading-[0.9] cursor-pointer select-none text-left"
+                            className="mb-3 md:mb-4 leading-[0.82] cursor-pointer select-none text-left w-full"
                             onClick={handleNameClick}
                             animate={
                                 isHacked
                                     ? {
-                                        x: [0, -8, 12, -6, 10, -4, 6, 0],
-                                        y: [0, 3, -5, 4, -3, 2, -1, 0],
-                                        skewX: [0, -5, 8, -6, 4, -2, 0],
+                                        x: [0, -4, 4, -2, 2, 0],
+                                        y: [0, 2, -3, 2, -1, 0],
+                                        skewX: [0, -3, 4, -2, 1, 0],
                                     }
                                     : autoGlitch
-                                        ? { x: [0, -3, 3, 0], y: [0, 1, -1, 0] }
+                                        ? { x: [0, -2, 2, 0], y: [0, 1, -1, 0] }
                                         : {}
                             }
                             transition={{ duration: isHacked ? 0.6 : 0.1 }}
@@ -376,7 +376,7 @@ export default function HeroProfile() {
                             )}
 
                             <motion.span
-                                className="block text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black tracking-tight uppercase"
+                                className="block text-3xl sm:text-5xl md:text-6xl lg:text-[4rem] xl:text-[5rem] font-black tracking-tight uppercase"
                                 style={{
                                     fontFamily: "Impact, 'Arial Black', sans-serif",
                                     color: "#ffffff",
@@ -400,7 +400,7 @@ export default function HeroProfile() {
                                 {scrambledName}
                             </motion.span>
                             <motion.span
-                                className="block text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl font-bold tracking-wide mt-2 md:mt-3 uppercase"
+                                className="block text-base sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl font-bold tracking-wide mt-2 md:mt-3 uppercase"
                                 style={{
                                     fontFamily: "'JetBrains Mono', monospace",
                                     color: isHacked ? "#FF0055" : "#e0e0e0",
